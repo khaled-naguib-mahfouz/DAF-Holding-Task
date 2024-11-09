@@ -1,0 +1,49 @@
+﻿@using System.Linq
+
+@{
+    ViewData["Title"] = "User Profile Details";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Profile Information</h4>
+            <dl class="row">
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9">@Model.FirstName</dd>
+
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9">@Model.LastName</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Date of Birth</dt>
+                <dd class="col-sm-9">@Model.DateOfBirth.ToString("yyyy-MM-dd")</dd>
+            </dl>
+        </div>
+    </div>
+
+    @if (Model.posts != null)
+    {
+        <h4>Posts</h4>
+        <div class="list-group">
+            @foreach (var post in Model.posts)
+            {
+                <a href="#" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">@post.Title</h5>
+                    <p class="mb-1">@post.Content</p>
+                    <small>Posted on: @post.DatePosted.ToString("yyyy-MM-dd")</small>
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No posts available.</p>
+    }
+
+

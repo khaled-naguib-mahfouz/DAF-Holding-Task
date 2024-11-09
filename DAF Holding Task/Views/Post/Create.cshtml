@@ -1,0 +1,36 @@
+﻿@model DAF_Holding_Task.ViewModels.PostFormViewModel
+
+@{
+    ViewData["Title"] = "Create Post";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="UserProfileId" class="form-label">User Profile</label>
+        <select asp-for="UserProfileID" class="form-select" asp-items="Model.UserProfiles">
+            <option value="">Select a User Profile</option>
+        </select>
+        <span asp-validation-for="UserProfileID" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Title" class="form-label">Post Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="Content" class="form-label">Content</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Create Post</button>
+    </div>
+</form>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
+
